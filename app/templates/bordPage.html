@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="mainContent">
+        <div class="postMessage">
+            {% if current_user.is_authenticated %}
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                {{ form_board.postBody(size=100, placeholder='Enter your text message here') }}
+                {{ form_board.submit }}
+            </form>
+            {% else %}
+                <h2>to post message please login</h2>
+            {% endif %}
+        <hr class="line_of_navbar">
+        </div>
+        <div class="pageSlider">
+                {% if prev_url %}
+                    <a class="prev_url" href="{{prev_url}}">back</a>
+                {% endif %}
+                {% if next_url %}
+                    <a class="next_url" href="{{next_url}}">next</a>
+                {% endif %}
+            </div>
+        <h1 class="bordName">{{ bord_name }}</h1>
+        {% for post in posts %}
+            <div class="post">
+                {% if post.author == borda.creator_name %}
+                <div class="post_head">
+                    <h3 class="post_name">{{ post.author }} (creator):</h3>
+                    <h3 class="post_time">{{ moment(post.timestamp).fromNow() }}</h3>
+                </div>
+                    <br>
+                    {% if current_user.username == post.author %}
+                        <p class="curr_us_txt_mssge" style="white-space:pre-wrap">{{ post.body }}</p>
+                        {% else %}
+                        <p  class="txt_mssge" style="white-space:pre-wrap">{{ post.body }}</p>
+                        {% endif %}
+                {% elif current_user.username == post.author %}
+                    <small><h3>{{ post.author }}:</h3>{{ moment(post.timestamp).fromNow() }}</small>
+                    <br>
+                    <p class="curr_us_txt_mssge" style="white-space:pre-wrap">{{ post.body }}</p>
+                {% else %}
+                <small><h3>{{ post.author }}:</h3>{{ moment(post.timestamp).fromNow() }}</small>
+                    <br>
+                    <p class="txt_mssge" style="white-space:pre-wrap">{{ post.body }}</p>
+                {% endif %}
+                <table>
+                    {% if current_user.username == borda.creator_name or current_user.username == "admin" %}
+                        <td><a class="btn btn-danger" href='/posts/delete/{{post.id}}'>Delete</a></td>
+                    {% endif %}
+                    {% if current_user.username == post.author %}
+                       <td><a class="btn btn-primary" href='/posts/edit/{{post.id}}'>Edit</a></td>
+                    {% endif %}
+                </table>
+            </div>
+        {% endfor%}
+        <div class="pageSlider">
+            {% if prev_url %}
+                <a class="prev_url" href="{{prev_url}}">back</a>
+            {% endif %}
+            {% if next_url %}
+                <a class="next_url" href="{{next_url}}">next</a>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

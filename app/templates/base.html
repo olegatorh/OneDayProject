@@ -1,0 +1,74 @@
+{% block head %}
+    {{ moment.include_jquery() }}
+    {{ moment.include_moment() }}
+    <title>{{ title }}</title>
+    {% block links %}
+        <link rel="shortcut icon" href="../static/img/page_icon.png" type="image/x-icon">
+        <link rel="stylesheet"  href="../static/styles/base.css" type="text/css" />
+        <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,500&display=swap" rel="stylesheet">
+    {% endblock %}
+{% endblock %}
+{% block body %}
+    <div class="body">
+        {% block header %}
+            <div class="header">
+                <div>
+                    <div class="Borda">Borda</div>
+                    {% if current_user.is_authenticated  %}
+                        <a href="/logout">logout</a>
+                    {% else %}
+                        <a href="/register">Register</a>
+                        <a href="/login">Login</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endblock %}
+        {% block navbar %}
+            <div class="navbar">
+                {% if current_user.is_authenticated %}
+                    <form action='/' method='POST'>
+                        {{ form.hidden_tag() }}
+                        <h3>Create your board</h3>
+                            {{ form.bord_name(placeholder='Name the board') }}
+                            {{ form.submit }}
+                            {% with messages = get_flashed_messages() %}
+                              {% if messages %}
+                                <ul class=flashes>
+                                {% for message in messages %}
+                                  <li>{{ message }}</li>
+                                {% endfor %}
+                                </ul>
+                              {% endif %}
+                            {% endwith %}
+                    </form>
+                {% else %}
+                    <div><a href="/login">to create board please login</a></div>
+                {% endif %}
+                <hr class="line_of_navbar">
+                <div class="navbar_elements">
+                    {% for boards in all_boards %}
+                        {% if current_user.username == boards.creator_name %}
+                            <a class="Navbar_Boards" href="{{ boards.bord_name }}">{{ boards.bord_name }}</a>
+                        {% else %}
+                            <a class="" href="{{ boards.bord_name }}">{{ boards.bord_name }}</a>
+                        {% endif %}
+                        {% if current_user.username == "admin" or current_user.username == boards.creator_name %}
+                            <a class="btn btn-primary delete" href='/boards/delete/{{boards.id}}'>Delete</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <hr class="line_of_navbar">
+                {{ moment().format('LL') }}
+            </div>
+        {% endblock %}
+        {% block content %}
+        {% endblock %}
+        {% block footer %}
+            <div class="footer">
+                <a href="https://www.instagram.com/oleg_a_de_photka/">
+                    <img src="../static/img/instagram.png" alt="author instagram" width="70" height="70">
+                </a>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

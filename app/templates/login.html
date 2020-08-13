@@ -1,0 +1,58 @@
+{% block content %}
+<title>{{ title }}</title>
+    <div class="loginPage">
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                <h1>welcome back</h1>
+                {{ form.username.label }}<br>
+                {{ form.username(size=32) }}<br>
+                {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.password.label }}<br>
+                {{ form.password(size=32) }}<br>
+                {% for error in form.password.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+            <p>{{ form.submit() }}</p>
+        <p> New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block style %}
+<link rel="shortcut icon" href="../static/img/page_icon.png" type="image/x-icon">
+    <style>
+        body{
+            background: gray;
+        }
+        .loginPage{
+            display: flex;
+            text-align: center;
+            background: white;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            border-color: #0f0f0f;
+            border-style: solid;
+            padding: 20px;
+            border-radius: 6px;}
+
+        .loginPage a{
+            text-decoration: none;
+            color: #28416F
+        }
+        .loginPage a:hover{
+            color: #ECA5B3;
+        }
+
+    </style>
+{% endblock %}

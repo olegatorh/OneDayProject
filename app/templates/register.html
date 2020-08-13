@@ -1,0 +1,88 @@
+{% block content %}
+	<title>{{ title }}</title>
+    <div class="registerPage">
+            <div class="register">
+                <hr>
+                <h1>Register</h1>
+                <hr>
+                <h3>welcome to Borda, </h3>
+                <h3>hope you enjoy </h3>
+                <h3>spending time here</h3>
+                <hr>
+                <h3 class="back_to_home"><a href="/">back to home</a></h3>
+                <hr>
+            </div>
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.username.label }}<br>
+                {{ form.username(size=32) }}<br>
+                {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.email.label }}<br>
+                {{ form.email(size=32) }}<br>
+                {% for error in form.email.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.password.label }}<br>
+                {{ form.password(size=32) }}<br>
+                {% for error in form.password.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.password2.label }}<br>
+                {{ form.password2(size=32) }}<br>
+                {% for error in form.password2.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+    </div>
+{% endblock %}
+
+{% block style %}
+<link rel="shortcut icon" href="../static/img/page_icon.png" type="image/x-icon">
+    <style>
+        body{
+            background: gray;
+        }
+        .registerPage{
+            display: flex;
+            text-align: center;
+            background: white;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            border-color: #0f0f0f;
+            border-style: solid;
+            padding: 20px;
+            border-radius: 6px;}
+        .register{
+            margin: 15px;
+
+        }
+        .register h1{
+            color: #28416F;
+        }
+
+        .back_to_home a{
+            color: #ECA5B3;
+            text-decoration: none
+        }
+
+        .back_to_home a:hover{
+            color: #28416F;
+        }
+
+
+    </style>
+{% endblock %}

@@ -1,0 +1,45 @@
+<title>{{ title }}</title>
+{% block content %}
+    <div class="edit_page">
+        <div class="edit_content">
+            <h2>Editing Post</h2>
+            <form action='/posts/edit/{{post.id}}' method='POST'>
+            <textarea class="form-control" name='content' id="content" aria-label="Enter Content" rows="10" cols="45">{{ post.body }}</textarea>
+            <br><input type='submit' value='Save'>
+        </form>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block style %}
+<link rel="shortcut icon" href="../static/img/page_icon.png" type="image/x-icon">
+    <style>
+        body{
+            background: gray;
+        }
+        .edit_page{
+            display: flex;
+            text-align: center;
+            background: white;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            border-color: #0f0f0f;
+            border-style: solid;
+            padding: 10px;
+            border-radius: 6px;}
+        textarea{
+            border-radius: 6px;
+            padding: 10px;}
+        .edit_content{
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+{% endblock %}
+
+
+

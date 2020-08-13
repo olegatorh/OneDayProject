@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Barlow", sans-serif; }
+
+.body {
+  background: white;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(9.5, 1fr);
+  grid-template-rows: 1fr 10fr 0.5fr;
+  grid-template-areas: ". . h h h h h h . ." ". . n c c c c c . ." "f f f f f f f f f f"; }
+  .body .header {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    max-height:400px;
+    background: black;
+    grid-area: h;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    color: white; }
+    .body .header .Borda {
+      font-size: 50px; }
+    .body .header a {
+      color: white;
+      font-size: 30px;
+      text-decoration: none;
+      text-underline: white;
+      margin: 200px; }
+    .body .header a:hover {
+      color: #ECA5B3;
+      text-decoration: underline; }
+  .body .navbar {
+    background: white;
+    grid-area: n;
+    border-radius: 10px;
+    border-color: black;
+    border-style: solid;
+    padding: 10px;
+    text-align: center; }
+    .body .navbar .navbar_elements {
+      overflow-y:scroll;
+      max-height: 1120px;
+    }
+    .body .navbar .Navbar_Boards {
+      background-color: #ECA5B3; }
+    .body .navbar h3 {
+      margin-bottom: 6px; }
+    .body .navbar input {
+      margin-bottom: 10px; }
+    .body .navbar a {
+      display: block;
+      color: black;
+      padding: 8px 16px;
+      text-decoration: none; }
+    .body .navbar a:hover {
+      color: white;
+      background-color: black; }
+    .body .navbar .line_of_navbar {
+      margin-top: 10px;
+      margin-bottom: 20px; }
+    .body .navbar .delete {
+      color: red;
+    }
+  .body .mainContent {
+    background: white;
+    grid-area: c;
+    border-radius: 10px;
+    padding: 10px;
+    border-color: black;
+    border-style: solid; }
+    .body .mainContent input {
+      margin: 10px; }
+    .body .mainContent .bordName {
+      text-align: center;
+      margin: 10px; }
+    .body .post_head{
+      padding: 10px;
+    }
+    .body .post_time {
+      float: right;
+      margin-bottom: 10px;
+    }
+    .body .post_name{
+      float: left;
+    }
+    .body .mainContent a {
+      font-size: 20px;
+      color: black;
+      text-decoration: none; }
+    .body .mainContent a:hover {
+      color: #28416F; }
+    .body .mainContent .curr_us_txt_mssge {
+      background-color: #ECA5B3;
+      padding: 20px;
+      border-radius: 10px;
+      word-break: break-all; }
+    .body .mainContent .txt_mssge {
+      background-color: #ADCDFE;
+      padding: 20px;
+      border-radius: 10px;
+      word-break: break-all; }
+    .body .mainContent .post {
+      border-radius: 10px;
+      border-style: solid;
+      border-color: black;
+      padding: 20px;
+      margin: 30px; }
+    .body .mainContent table {
+      margin-top: 10px;
+      margin-left: 90%; }
+  .body .footer {
+    background: black;
+    grid-area: f;
+    padding: 10px;
+    text-align: center; }
+  .body .footer img{
+    float: right;
+    margin-right: 40px;
+  }
+  .body .index_text {
+    margin-top: 30px;
+    font-size: 30px;
+    padding: 30px; }
+  .body .pageSlider a {
+    font-size: 30px; }
+  .body .pageSlider .next_url {
+    float: right;
+    margin-right: 10%; }
+  .body .pageSlider .prev_url {
+    float: left;
+    margin-left: 10%; }
+
+textarea {
+  resize: none;
+  border-radius: 5px;
+  padding: 10px; }
+
+/*# sourceMappingURL=base.css.map */
